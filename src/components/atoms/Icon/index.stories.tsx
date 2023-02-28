@@ -4,7 +4,7 @@ import Icon from "./index";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import theme from "../../../theme";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const home = require("../../../../public/images/home.svg") as string;
+const home = require("../../../../public/assests/images/home.svg") as string;
 
 export default {
   title: "atoms/Icon",
