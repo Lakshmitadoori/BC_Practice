@@ -4,27 +4,17 @@ on:
     branches:
       - dev
   pull_request:
-    types: [opened, synchronize, reopened, closed]
+    types: [opened, synchronize, reopened]
 jobs:
   sonarcloud:
-    # if: startsWith(github.head_ref, 'FE_') && github.event.pull_request.merged == false
     name: SonarCloud
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./checkr
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Install Dependencies
-        run: npm install --legacy-peer-deps
-      - name: Test and coverage
-        run: npm test 
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
-        with:
-          projectBaseDir: ./checkr
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
