@@ -15,8 +15,11 @@ export default {
 const Template: ComponentStory<typeof Selection> = (args) => (
   <Selection {...args} />
 );
-export const PageSelection = Template.bind({});
-PageSelection.storyName = "Page Selector";
-PageSelection.args = {
+export const Simple = Template.bind({});
+Simple.storyName = "Page Selector";
+Simple.args = {
   options: ["10 per page", "20 per page", "30 per page"],
+  height: 26,
+  width: 130,
+  variant: "caption",
 };
