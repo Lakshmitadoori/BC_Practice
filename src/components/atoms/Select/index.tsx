@@ -1,47 +1,36 @@
 import React from "react";
-import { Typography, Menu, styled } from "@mui/material";
+import { Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-interface Iprops {
-  options: string[];
+interface IOptions {
+  value: string;
+  label: string;
+}
+interface IProps {
+  options: IOptions[];
   size?: "small" | "medium";
   height?: number;
   width?: number;
-  variant?:
-    | "inherit"
-    | "button"
-    | "caption"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "subtitle1"
-    | "subtitle2"
-    | "body1"
-    | "body2"
-    | "overline";
-  hangleChange?: (event: SelectChangeEvent) => void;
+  handleChange: (event: SelectChangeEvent) => void;
 }
 
-const Selection = (props: Iprops) => {
-  const [page, setPage] = React.useState("0");
-  const handleChange = (event: SelectChangeEvent) => {
-    setPage(event.target.value);
-  };
-  const { options, size, height, width, variant } = props;
+const Selection = (props: IProps) => {
+  const [page, setPage] = React.useState("10");
+  const { options, size, height, width, handleChange } = props;
   return (
     <Select
       value={page}
-      onChange={handleChange}
+      onChange={(event) => {
+        setPage(event.target.value);
+        handleChange(event);
+      }}
       size={size}
       sx={{ height: `${height}px`, width: `${width}px` }}
     >
       {options.map((option, index) => {
         return (
-          <MenuItem value={index.toString()} key={index} data-testid={index}>
-            <Typography variant={variant}>{option}</Typography>
+          <MenuItem value={option.value} key={index} data-testid={index}>
+            <Typography variant="caption2" color='#2C2C2E'>{option.label}</Typography>
           </MenuItem>
         );
       })}

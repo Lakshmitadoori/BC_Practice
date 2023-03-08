@@ -69,6 +69,7 @@ declare module "@mui/material/Typography" {
     h1: true;
     h2: true;
     caption2: true;
+    caption1: true;
   }
 }
 export const theme = createTheme({
@@ -105,9 +106,16 @@ export const theme = createTheme({
       fontSize: "14px",
       lineHeight: "20px",
     },
-    caption2: {
+    caption1: {
       fontStyle: "normal",
-      fontWeight: 400,
+      fontWeight: 500,
+      fontSize: "12px",
+      lineHeight: "18px",
+    },
+    caption2: {
+      fontFamily:"Roboto",
+      fontStyle: "normal",
+      fontWeight: 500,
       fontSize: "12px",
       lineHeight: "18px",
     },
