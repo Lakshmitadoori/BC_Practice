@@ -2,19 +2,19 @@ import React from "react";
 import { Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-interface IOptions {
+interface Options {
   value: string;
   label: string;
 }
-interface IProps {
-  options: IOptions[];
+interface selectProps {
+  options: Options[];
   size?: "small" | "medium";
   height?: number;
   width?: number;
   handleChange: (event: SelectChangeEvent) => void;
 }
 
-const Selection = (props: IProps) => {
+const Selection = (props: selectProps) => {
   const [page, setPage] = React.useState("10");
   const { options, size, height, width, handleChange } = props;
   return (
