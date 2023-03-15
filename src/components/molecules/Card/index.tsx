@@ -3,13 +3,13 @@ import {Card, ThemeProvider} from "@mui/material";
 import { Typography } from "@mui/material";
 import theme from "../../../theme";
 
-interface IProps {
+interface Cards {
     title?:string;
     content?: string;
     src?:string;
     alt?:string;
 }
-const InfoCard =(props: IProps) =>{
+const InfoCard =(props: Cards) =>{
     return (
         <>
         <ThemeProvider theme={theme}>
