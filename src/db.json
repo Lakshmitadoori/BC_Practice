@@ -10,9 +10,8 @@
       "phoneNo": "(555) 555-5555",
       "zipcode": "94158",
       "driverLicense": "FTEST1111 (CA)",
-      "adjudication": "Adverse Action"
+      "adjudication": ""
     },
-
     {
       "id": 2,
       "name": "Walsh",
@@ -23,7 +22,7 @@
       "phoneNo": "(555) 555-5556",
       "zipcode": "94158",
       "driverLicense": "FTEST1111 (CA)",
-      "adjudication": "Engage"
+      "adjudication": ""
     },
     {
       "id": 3,
@@ -479,7 +478,7 @@
       "phoneNo": "(555) 555-5555",
       "zipcode": "94158",
       "driverLicense": "FTEST1111 (CA)",
-      "adjudication": "Engage"
+      "adjudication": ""
     }
   ]
 }

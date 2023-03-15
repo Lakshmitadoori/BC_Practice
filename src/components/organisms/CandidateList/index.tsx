@@ -5,7 +5,7 @@ import Pagination from "@mui/material/Pagination";
 import { SelectChangeEvent } from "@mui/material/Select";
 import MuiChip from "../../atoms/Chip";
 import Selection from "../../../components/atoms/Select";
-import { PaginationItem } from "@mui/material";
+import { Button, PaginationItem } from "@mui/material";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import {
   Table,
@@ -60,6 +60,7 @@ const CandidateList = (props: IProps) => {
   if (!posts) return null;
   else
     return (
+      <>
       <ThemeProvider theme={theme}>
         <Table
           size="small"
@@ -107,14 +108,12 @@ const CandidateList = (props: IProps) => {
                       <MuiChip
                         background={theme.palette.accent.lightGreen}
                         color={theme.palette.accent.green}
-                        label="ENGAGE"
-                      />
+                        label="ENGAGE" />
                     ) : (
                       <MuiChip
                         background={theme.palette.accent.lightYellow}
                         color={theme.palette.accent.yellow}
-                        label="ADVERSE ACTION"
-                      />
+                        label="ADVERSE ACTION" />
                     )}
                   </TableCell>
                   <TableCell>
@@ -123,14 +122,12 @@ const CandidateList = (props: IProps) => {
                         background={theme.palette.accent.lightGreen}
                         color={theme.palette.accent.green}
                         variant="filled"
-                        label="CLEAR"
-                      />
+                        label="CLEAR" />
                     ) : (
                       <MuiChip
                         background={theme.palette.accent.lightYellow}
                         color={theme.palette.accent.yellow}
-                        label="CONSIDER"
-                      />
+                        label="CONSIDER" />
                     )}
                   </TableCell>
                   <TableCell>
@@ -146,6 +143,7 @@ const CandidateList = (props: IProps) => {
                     </Typography>
                   </TableCell>
                   <TableCell sx={{ width: "166px", height: "26px" }} />
+
                 </TableRow>
               );
             })}
@@ -164,8 +162,7 @@ const CandidateList = (props: IProps) => {
                   ]}
                   handleChange={handleChange}
                   width={113}
-                  height={26}
-                />
+                  height={26} />
               </TableCell>
               <TableCell colSpan={1} sx={{ paddingLeft: 0, marginLeft: 0 }}>
                 <Pagination
@@ -178,16 +175,16 @@ const CandidateList = (props: IProps) => {
                     if (item.type != "end-ellipsis")
                       if (item.type != "start-ellipsis")
                         return <PaginationItem slots={{}} {...item} />;
-                  }}
+                  } }
                   siblingCount={1}
                   boundaryCount={0}
-                  onChange={handleChangePage}
-                />
+                  onChange={handleChangePage} />
               </TableCell>
+            
             </TableRow>
           </TableFooter>
         </Table>
-      </ThemeProvider>
+      </ThemeProvider></>
     );
 };
 export default CandidateList;
