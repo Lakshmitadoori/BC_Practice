@@ -1,6 +1,6 @@
 interface ImageProps {
     source: string;
-    alt?: string;
+    alt: string;
     width?: string;
     height?: string;
     onClick?:()=>void;

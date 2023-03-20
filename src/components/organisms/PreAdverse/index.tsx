@@ -549,7 +549,7 @@ const Pread = (props: PreProps) => {
                                 variant="caption2"
                               />
                               <Stack direction="row" spacing={2}>
-                                <Image source={g} />
+                                <Image source={g} alt="drive" />
                                 <MuiTypography
                                   children="Summary of right under the FCRA"
                                   variant="caption2"
@@ -557,7 +557,7 @@ const Pread = (props: PreProps) => {
                                 />
                               </Stack>
                               <Stack direction="row" spacing={2}>
-                                <Image source={g} />
+                                <Image source={g}  alt="drive"/>
                                 <MuiTypography
                                   children="Copy of background report"
                                   variant="caption2"
