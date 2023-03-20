@@ -3,7 +3,7 @@ import { Stack } from '@mui/material';
 import MuiTypography from '../../atoms/Typography';
 import MuiButton from '../../atoms/Button';
 
-interface IButtonWithTypographyProps {
+interface ButtonWithTypographyProps {
   direction?:"row"| "row-reverse" | "column" | "column-reverse";
   variant?:"text" | "contained" | "outlined" ;
   onClick?: () => void;
@@ -18,7 +18,7 @@ interface IButtonWithTypographyProps {
   fontFamily?:string;
 }
 
-const ButtonWithTypography: React.FC<IButtonWithTypographyProps> = ({
+const ButtonWithTypography: React.FC<ButtonWithTypographyProps> = ({
   direction,
   variant,
   onClick,
