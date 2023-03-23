@@ -1,3 +1,5 @@
+// 
+
 import * as React from "react";
 import axios from "axios";
 import { theme } from "../../../theme";
@@ -6,7 +8,8 @@ import { SelectChangeEvent } from "@mui/material/Select";
 import MuiChip from "../../atoms/Chip";
 import Selection from "../../../components/atoms/Select";
 import { Button, PaginationItem } from "@mui/material";
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
+// import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import {ThemeProvider} from "@mui/material";
 import {
   Table,
   TableHead,
@@ -21,8 +24,13 @@ interface IProfile {
   id: number;
   name: string;
   status: string;
-  adjudication: string;
   location: string;
+  email: string;
+  dob: string;
+  phoneNo: string;
+  zipcode: string;
+  driverLicense: string;
+  adjudication: string;
 }
 interface IProps {
   width?: number;
@@ -30,23 +38,18 @@ interface IProps {
   top?: number;
   left?: number;
   right?: number;
+  searchTerm:string;
+  posts:    IProfile[],
 }
 const CandidateList = (props: IProps) => {
-  const { width = 1056, height, top = 0, left = 0, right = 0 } = props;
-  const [posts, setPosts] = React.useState([]);
+  const { width = 1056, height, top = 0, left = 0, right = 0, searchTerm  } = props;
+  let initial: IProfile[] = [];
   const [currentPage, setCurrentPage] = React.useState(1);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const date = new Date();
-  React.useEffect(() => {
-    const fetchPosts = async () => {
-      const result = await axios.get("http://localhost:3000/profile");
-      setPosts(result.data);
-    };
-    fetchPosts();
-  }, []);
   const indexOfLastPost = currentPage * rowsPerPage;
   const indexOfFirstPost = indexOfLastPost - rowsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = props.posts.slice(indexOfFirstPost, indexOfLastPost);
   const handleChange = (event: SelectChangeEvent) => {
     setRowsPerPage(parseInt(event.target.value));
     setCurrentPage(1);
@@ -57,7 +60,7 @@ const CandidateList = (props: IProps) => {
   ) => {
     setCurrentPage(value);
   };
-  if (!posts) return null;
+  if (!props.posts) return null;
   else
     return (
       <>
@@ -82,10 +85,7 @@ const CandidateList = (props: IProps) => {
           >
             {labels.map((label, index) => (
               <TableCell key={index}>
-                <Typography
-                  variant="caption1"
-                  sx={{ color: theme.palette.textColor.mediumEmphasis }}
-                >
+                <Typography variant="caption" sx={{ color: theme.palette.textColor.mediumEmphasis }}>
                   {label}
                 </Typography>
               </TableCell>
@@ -151,10 +151,10 @@ const CandidateList = (props: IProps) => {
           <TableFooter>
             <TableRow>
               <TableCell colSpan={5}>
-                <Typography variant="caption1" sx={{ marginRight: "20px" }}>
-                  {rowsPerPage} out of {posts.length} results
+                <Typography variant="caption" sx={{ marginRight: "20px" }}>
+                  {rowsPerPage} out of {props.posts.length} results
                 </Typography>
-                <Selection
+                    <Selection
                   options={[
                     { value: "10", label: "10 per page" },
                     { value: "20", label: "20 per page" },
@@ -168,7 +168,7 @@ const CandidateList = (props: IProps) => {
                 <Pagination
                   shape="rounded"
                   size="small"
-                  count={Math.ceil(posts.length / rowsPerPage)}
+                  count={Math.ceil(props.posts.length / rowsPerPage)}
                   page={currentPage}
                   renderItem={(item) => {
                     console.log(item);
@@ -188,3 +188,4 @@ const CandidateList = (props: IProps) => {
     );
 };
 export default CandidateList;
+
